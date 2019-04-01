@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+img {
+  display: block;
+  max-width: 100%; }
+
+button:active, button:focus {
+  outline: none; }
+
+#btnPrev {
+  margin-right: auto; }
+
+.logo {
+  display: inline-block;
+  max-width: 300px; }
+
+.navbar-nav {
+  margin-left: auto; }
+
+/*Modal*/
+.modal-deader {
+  position: relative; }
+  .modal-deader .close {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    color: #000000;
+    z-index: 5; }
+
+#SapXep:hover {
+  cursor: pointer; }
+
+/*# sourceMappingURL=style.css.map */

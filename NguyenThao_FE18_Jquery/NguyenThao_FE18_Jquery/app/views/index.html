@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quản lý sinh viên</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <!-- Font Awesome 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-5">
+        <!-- Brand/logo -->
+        <a class="navbar-brand logo" href="#"><img src="../../assets/img/logo.png" alt="logo.png"></a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Danh sách khóa học</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Thống kê</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Thông báo</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- end header -->
+    <!-- main content -->
+    <section class="main-wrap">
+        <div class="container">
+            <div class="card p-4">
+                <div class="card-header">
+                    <h1 class="mb-5">Danh sách sinh viên</h1>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <button id="btnThemSV" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-plus mr-1"></i>
+                                Thêm Mới
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <input type="text" id="inputtimSV" class="form-control" placeholder="Tìm sinh viên"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="timSV"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-0">
+                    <table id="tbSV" class="table table-bordered table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="nowrap">
+                                    <span class="mr-1">Mã sinh viên</span>
+                                    <i class="fa fa-arrow-up" id="SapXepTang" style="display:none"></i>
+                                    <i class="fa fa-arrow-down" id="SapXepGiam" ></i>
+                                </th>
+                                <th>Họ và tên</th>
+                                <th>Tuổi</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Điểm Toán</th>
+                                <th>Điểm Lý</th>
+                                <th>Điểm Hóa</th>
+                                <th>Điểm TB</th>
+                                <th><em class="fa fa-cog"></em></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableDanhSachSV">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end main content -->
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">                
+                <header class="modal-deader p-3 border-bottom">
+                    <h2 id="header-title" class="mb-0 text-center">Log In</h2>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </header>
+
+                <!-- Modal Header -->
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form role="form" id="myForm" name="formSV" >
+                        <div id="thongtinSV" class="student-info">
+                            <div class="form-group row">
+                                <label for="inputMaSV" class="col-sm-3 col-form-label">Mã SV</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputMaSV"
+                                        placeholder="Mã số sinh viên" validate="require|unique">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputHoTen" class="col-sm-3 col-form-label">Họ Tên</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="hoten" id="inputHoTen" placeholder="Họ Và Tên"  validate="require">
+                                    <span class="text-danger" message-for="inputHoTen"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputTuoi" class="col-sm-3 col-form-label">Tuổi</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputTuoi" placeholder="Tuổi" validate="require|number|min:18">
+                                    <span class="text-danger" message-for="inputTuoi"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" validate="require|email">
+                                    <span class="text-danger" message-for="inputEmail"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputSoDT" class="col-sm-3 col-form-label">Điện Thoại</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputDT" placeholder="Số Điện Thoại" validate="require|number">
+                                    <span class="text-danger" message-for="inputDT"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="diemSoSV" class="student-info hidden">
+                            <div class="form-group row">
+                                <label for="inputDiemToan" class="col-sm-3 col-form-label">Điểm Toán</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputDiemToan" placeholder="Điểm Toán" validate="require|number|min:0|max:10">
+                                    <span class="text-danger" message-for="inputDiemToan"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputDiemLy" class="col-sm-3 col-form-label">Điểm Lý</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputDiemLy" placeholder="Điểm Lý" validate="require|number|min:0|max:10">
+                                    <span class="text-danger" message-for="inputDiemLy"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputDiemHoa" class="col-sm-3 col-form-label">Điểm Hóa</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputDiemHoa" placeholder="Điểm Hóa" validate="require|number|min:0|max:10">
+                                    <span class="text-danger" message-for="inputDiemHoa"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer" id="modal-footer">
+                    <button class="btn btn-primary" id="btnThem" type="submit">Thêm</button>
+                    <button type="button" class="btn btn-primary" id="btnCapNhat">Sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../models/sinhvien.js"></script>
+    <script src="../models/quanly_sinhvien.js"></script>
+    <script src="../controllers/main.js"></script>
+</body>
+
+</html>

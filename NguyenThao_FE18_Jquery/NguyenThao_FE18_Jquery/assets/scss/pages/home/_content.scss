@@ -1,0 +1,19 @@
+/*Modal*/
+.modal-deader {
+    position: relative;
+    .close {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        color: #000000;
+        z-index: 5;
+    }
+}
+#SapXep{
+    &:hover{
+        cursor: pointer;
+    }
+}
